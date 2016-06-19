@@ -1,6 +1,6 @@
 # k_nearest_neighbors
 
-Here are two Java classes to test the K nearest neighbors algorithm.
+Here are four Java classes to test the K nearest neighbors algorithm.
 
 1. The KNN.java nad the Movie.java
 
@@ -8,4 +8,4 @@ Here are two Java classes to test the K nearest neighbors algorithm.
 
 2. The KNNWithNormalization.java and the Entry.java
 
-  Here the knn class has become a little more abstract, the data is loaded from a file and an entry can have an arbitrary amount of attributes and types. Furthermore it works with normalization.
+  Here the knn class has become a little more abstract, the data is loaded from a file and an entry can have an arbitrary amount of attributes. Furthermore it works with normalization.
