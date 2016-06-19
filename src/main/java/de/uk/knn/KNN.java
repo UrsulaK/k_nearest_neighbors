@@ -19,6 +19,7 @@ public class KNN {
 		movies.add(new Movie("Action", 98, 2));
 		
 		Movie unknownMovie = new Movie(18,90);
+		System.out.println("Unknown movie data:  kicks: " + unknownMovie.getKicks() + " kisses: " + unknownMovie.getKisses());
 		KNN knn = new KNN();
 		List<Movie> nearestNeighbours = knn.findNearestNeighbors(movies, unknownMovie);
 		System.out.println("The movie is a " + knn.classifyMovie(unknownMovie, nearestNeighbours).getType());
@@ -60,8 +61,11 @@ public class KNN {
 		if(countAction > countRomance){
 			unknownMovie.setType("Action");
 		}
-		else{
+		else if(countAction < countRomance){
 			unknownMovie.setType("Romance");
+		}
+		else{
+			unknownMovie.setType("Action Romance");
 		}
 		return unknownMovie;
 	}

@@ -16,10 +16,11 @@ public class KNNWithNormalization {
 
 	private static final String PATH_1 = "src/main/resources/IRIS.csv";
 	private static final String PATH_2 = "src/main/resources/iris.data";
+	private static final String PATH_3 = "src/main/resources/movie.csv";
 	private List<Entry> trainingData;
 	private Map<Integer, Map<String, Double>> minMaxData;
 	String classifiedType = "";
-	private int k = 10;
+	private int k = 6;
 	
 	public static void main(String[] args){
 		
@@ -55,6 +56,18 @@ public class KNNWithNormalization {
 
 		List<Entry> nearestNeighbors2 = knn.findNearestNeighbors(nomalizedEntry2);
 		knn.classifyEntry(nearestNeighbors2, unknownEntry2);
+		
+		// KNN with movies
+		knn.loadTrainingData(PATH_3);
+		knn.getMinMax();
+		knn.normalizeTrainingData();
+		List<Double> data3 = Arrays.asList(18.0, 90.0);
+		Entry unknownEntry3 = new Entry();
+		unknownEntry3.setData(data3);
+		Entry nomalizedEntry3 = knn.normalizeEntry(unknownEntry3);
+
+		List<Entry> nearestNeighbors3 = knn.findNearestNeighbors(nomalizedEntry3);
+		knn.classifyEntry(nearestNeighbors3, unknownEntry3);
 	}
 	
 	public void loadTrainingData(String path){
@@ -200,6 +213,7 @@ public class KNNWithNormalization {
 				classifiedType = " There are equal distances :" + equalTypes;
 			}
 		}
+		unknownEntry.setType(classifiedType);
 		System.out.println("The entry is classified as: " + classifiedType);
 		
 	}
